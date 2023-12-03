@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class User(models.Model):
@@ -11,3 +12,11 @@ class User(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_id': self.pk})
+
+
+    class Meta:
+        verbose_name = 'Пользователи сайта'
+        verbose_name_plural = 'Пользователи сайта'
